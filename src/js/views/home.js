@@ -40,8 +40,8 @@ useEffect (() => {
 }, []);
 
 return (
-    <><><div className="container-fluid">
-        <div className="blog-title text-light m-3 pb-4">
+    <><><><div className="container-fluid">
+        <div className="blog-title text-warning m-3 pb-4">
             <h1>Characters</h1>
         </div>
 
@@ -50,6 +50,7 @@ return (
                 <div key={index} className="col">
                     <div className="card">
                         <h4>{c.name}</h4>
+                        
                         <div key={index} className="col">
                             Gender: {c.gender} <br />
                             Hair color: {c.hair_color} <br />
@@ -66,7 +67,6 @@ return (
                                 </span>
                             </button>
                         </Link>
-                        
                     </div>
                 </div>
             ))}
@@ -74,7 +74,7 @@ return (
     </div>
         {/**PLANETAS */}
         <div className="container-fluid pt-4">
-            <div className="blog-title text-light m-3 pb-4">
+            <div className="blog-title text-warning m-3 pb-4">
                 <h1>Planets</h1>
             </div>
             <div className="row flex-row flex-nowrap" id="scroll-container">
@@ -86,23 +86,23 @@ return (
                                 Population: {planet.population}<br />
                                 Terrain: {planet.terrain}<br />
                             </div>
-                            
-                                <button data-text="Awesome" className="button">
-                                    <span className="actual-text">
-                                        &nbsp;Learn More!&nbsp;
-                                    </span>
-                                    <span className="hover-text" aria-hidden="true">
-                                        &nbsp;Learn More!&nbsp;
-                                    </span>
-                                </button>
-                        
-                        </div>
+                            <Link to={`/planets/${index + 1}`}>
+                            <button data-text="Awesome" className="button">
+                                <span className="actual-text">
+                                    &nbsp;Learn More!&nbsp;
+                                </span>
+                                <span className="hover-text" aria-hidden="true">
+                                    &nbsp;Learn More!&nbsp;
+                                </span>
+                            </button>
+                        </Link>
                     </div>
-                ))}
             </div>
+            ))}
         </div>
+    </div>
     </><div className="container-fluid pt-4">
-            <div className="blog-title text-light m-3 pb-4">
+            <div className="blog-title text-warning m-3 pb-4">
                 <h1>Vehicles</h1>
             </div>
             <div className="row flex-row flex-nowrap" id="scroll-container">
@@ -110,24 +110,25 @@ return (
                     <div key={index} className="col">
                         <div className="card">
                             <h4>{vehicle.name}</h4>
+                           
                             <div key={index}>
                                 Passengers: {vehicle.passengers}<br />
                                 Max Speed: {vehicle.max_atmosphering_speed}<br />
                             </div>
-                           
-                                <button data-text="Awesome" className="button">
-                                    <span className="actual-text">
-                                        &nbsp;Learn More!&nbsp;
-                                    </span>
-                                    <span className="hover-text" aria-hidden="true">
-                                        &nbsp;Learn More!&nbsp;
-                                    </span>
-                                </button>
-                            
+                            <Link to={`/vehicles/${index + 1}`}>
+                            <button data-text="Awesome" className="button">
+                                <span className="actual-text">
+                                    &nbsp;Learn More!&nbsp;
+                                </span>
+                                <span className="hover-text" aria-hidden="true">
+                                    &nbsp;Learn More!&nbsp;
+                                </span>
+                            </button>
+                            </Link>
                         </div>
                     </div>
                 ))}
             </div>
-        </div></>
+        </div></></>
   );
 };

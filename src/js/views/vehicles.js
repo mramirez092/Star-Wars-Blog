@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import { Link, useParams } from 'react-router-dom'
+import React, {useEffect} from "react";
+import { useParams } from "react-router-dom";
 
-export const Characters = () => {
+export const Vehicles = () => {
     const { id } = useParams();
 
     useEffect (() => {
-        fetch(`{https://swapi.dev/api/people/${id}/}`)
+        fetch(`{https://swapi.dev/api/vehicles/${id}/}`)
         .then((response) => response.json())
         .then((character) => {
         console.log(character)
@@ -15,8 +15,7 @@ export const Characters = () => {
 
     return(
         <div className="container-fluid">
-            <h1>Characters</h1>
+            <h1>Vehicles</h1>
         </div>
     )
 }
-
