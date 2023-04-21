@@ -4,24 +4,24 @@ body {
     background-position: center center; 
 }
 
-.card {
+.cardMia {
     width: 350px;
-    height: 400px;
-    background: rgb(40,40,55);
+    height: 450px;
+    background: rgb(48, 48, 52);
     background: linear-gradient(344deg, rgba(40,40,55,1) 0%, rgba(16,16,18,1) 50%);
     box-shadow: 4px 6px 14px #00000036;
     border-radius: 3px;
     color: #F9F9F9;
     padding: 16px;
     transition: all .3s;
-    float: right;
     display: flex;
     align-items: center;
     word-break:break-all;
     margin: 0 0 1em 1em;
+    border-radius: 20px;
    }
    
-   .card:hover {
+   .cardMia:hover {
     margin-top: -10px;
    }
 
@@ -31,9 +31,14 @@ body {
     margin: 10px;
 }
 
+.card-text {
+  position: absolute;
+  top: 68%;
+  right: 35%;
+}
 /* === removing default button style ===*/
 .button {
-    margin: 0;
+   
     height: auto;
     background: transparent;
     padding: 0;
@@ -50,11 +55,12 @@ body {
     text-decoration: none;
     font-size: var(--fs-size);
     font-family: "Helvetica";
-    position: relative;
+    position: absolute;
     text-transform: uppercase;
     color: white;
     -webkit-text-stroke: 1px var(--text-stroke-color);
-    top: 40% !important;
+    top: 88%;
+    right: 50%;
   }
   /* this is the text, when you hover on button */
   .hover-text {
