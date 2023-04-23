@@ -12,16 +12,15 @@ export const Navbar = () => {
 			<div className="logo">
 				<img src={swlogo}/>
 			</div>
-			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-secondary m-3">Check the Context in action</button>
-				</Link>
-			</div>
+			
 			<div class="btn-group m-4">
-  				<button class="btn btn-secondary btn-lg" type="button">
+			<Link to = "/favorites">
+  				<button class="btn btn-warning btn-lg" type="button">
    					 Favorites
   				</button>
-  				<button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split"
+			</Link>
+				
+  				<button type="button" class="btn btn-lg btn-warning dropdown-toggle dropdown-toggle-split"
 						data-bs-toggle="dropdown" aria-expanded="false">
 
     				<span class="visually-hidden">Toggle Dropdown</span>

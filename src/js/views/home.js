@@ -1,43 +1,66 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import "../../styles/home.css";
 import { Link, useParams } from 'react-router-dom'
+import { Context } from "../store/appContext";
 
 export const Home = () => {
+    const { store, actions } = useContext(Context);
 
-const [character, setCharacter] = useState([]);
-const [planets, setPlanets] = useState([]);
-const [vehicles, setVehicles] = useState([]);
+    const [characters, setCharacters] = useState([]);
+    const [planets, setPlanets] = useState([]);
+    const [vehicles, setVehicles] = useState([]);
+    const [favoriteStatus, setFavoriteStatus] = useState({});
 
-useEffect (() => {
-	fetch("https://swapi.dev/api/people/")
-	.then((response) => response.json())
-	.then((character) => {
-    setCharacter(character.results)
-    console.log(character)
-  })
-	.catch(error => console.error(error))
-}, []);
- 
-useEffect (() => {
-	fetch("https://swapi.dev/api/planets/")
-	.then((response) => response.json())
-	.then((planets) => {
-    setPlanets(planets.results)
-    console.log(planets)
-  })
-	.catch(error => console.error(error))
-}, []);
+    useEffect (() => {
+        const favoriteIds = store.favorites.map((favorite) => favorite.index);
+        const newfavoriteStatus = {};
 
-useEffect (() => {
-	fetch("https://swapi.dev/api/vehicles/")
-	.then((response) => response.json())
-	.then((vehicle) => {
-    setVehicles(vehicle.results)
-    console.log('Este es mi get', vehicle)
-  })
-	.catch(error => console.error(error))
-}, []);
+        characters.forEach((c) => {
+            newfavoriteStatus[c.index] = favoriteIds.includes(c.index);
+        })
+        setFavoriteStatus(newfavoriteStatus);
+    },[store.favorites, characters]);
+
+    const handleClick = (c, event) => {
+        actions.selectId(c);
+        actions.addFavorite();
+        setFavoriteStatus((prevState) => ({
+          ...prevState,
+          [c.index]: !prevState[c.index]
+        }));
+      };
+      
+
+    useEffect (() => {
+        fetch("https://swapi.dev/api/people/")
+        .then((response) => response.json())
+        .then((characters) => {
+            setCharacters(characters.results)
+            console.log(characters)
+        })
+        .catch(error => console.error(error))
+    }, []);
+    
+    useEffect (() => {
+        fetch("https://swapi.dev/api/planets/")
+        .then((response) => response.json())
+        .then((planets) => {
+            setPlanets(planets.results)
+            console.log(planets)
+        })
+        .catch(error => console.error(error))
+    }, []);
+
+    useEffect (() => {
+        fetch("https://swapi.dev/api/vehicles/")
+        .then((response) => response.json())
+        .then((vehicles) => {
+            setVehicles(vehicles.results)
+            console.log('Este es mi get', vehicles)
+        })
+        .catch(error => console.error(error))
+    }, []);
 
 return (
     <><><><div className="container-fluid">
@@ -46,7 +69,7 @@ return (
         </div>
 
         <div className="row flex-row flex-nowrap" id="scroll-container">
-            {character.map((c, index) => (
+            {characters.map((c, index) => (
                 <div key={index} className="col">
                     <div className="card">
                         <h4>{c.name}</h4>
@@ -67,6 +90,12 @@ return (
                                 </span>
                             </button>
                         </Link>
+                        <button class="btn2" 
+                        onClick={() => handleClick(c)} >
+                            <svg viewBox="0 0 17.503 15.625" height="20.625" width="20.503" xmlns="http://www.w3.org/2000/svg" class="iconFav">
+                            <path transform="translate(0 0)" d="M8.752,15.625h0L1.383,8.162a4.824,4.824,0,0,1,0-6.762,4.679,4.679,0,0,1,6.674,0l.694.7.694-.7a4.678,4.678,0,0,1,6.675,0,4.825,4.825,0,0,1,0,6.762L8.752,15.624ZM4.72,1.25A3.442,3.442,0,0,0,2.277,2.275a3.562,3.562,0,0,0,0,5l6.475,6.556,6.475-6.556a3.563,3.563,0,0,0,0-5A3.443,3.443,0,0,0,12.786,1.25h-.01a3.415,3.415,0,0,0-2.443,1.038L8.752,3.9,7.164,2.275A3.442,3.442,0,0,0,4.72,1.25Z" id="Fill"></path>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             ))}
@@ -77,10 +106,10 @@ return (
             <div className="blog-title text-warning m-3 pb-4">
                 <h1>Planets</h1>
             </div>
-            <div className="row" id="scroll-container">
+            <div className="row flex-row flex-nowrap" id="scroll-container">
                 {planets.map((planets, index) => (
                     <div key={index} className="col">
-                        <div className="cardMia">
+                        <div className="card">
                             <h4>{planets.name}</h4>
                             <div key={index} className="card-text">
                                 Population: {planets.climate}<br />

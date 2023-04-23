@@ -13,6 +13,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Planets } from "./views/planets";
 import { Vehicles } from "./views/vehicles";
+import { Favorites } from "./views/favorites";
 
 //create your first component
 const Layout = () => {
@@ -33,6 +34,7 @@ const Layout = () => {
 						<Route path="/characters/:id" element={<Characters />} />
 						<Route path="/planets/:idPlanets" element={<Planets />} />
 						<Route path="/vehicles/:idVehicles" element={<Vehicles />} />
+						<Route path="/favorites" element={<Favorites />} />
 					</Routes>
 					<Footer />
 				</ScrollToTop>
