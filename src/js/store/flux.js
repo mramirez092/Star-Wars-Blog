@@ -2,16 +2,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			favorites: [],
-			idCharacter: {}
+			idElement: {}
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			selectId: (character) => {
-				setStore({ idCharacter: character });
+			selectId: (element) => {
+				setStore({ idElement: element });
 			},
 			addFavorite: () => {
 				const store = getStore();
-				const newFavorite = store.idCharacter;
+				const newFavorite = store.idElement;
 				setStore({ favorites: [...store.favorites, newFavorite] });
 			},
 			removeFavorite: (like) => {

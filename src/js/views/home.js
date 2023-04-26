@@ -107,13 +107,13 @@ return (
                 <h1>Planets</h1>
             </div>
             <div className="row flex-row flex-nowrap" id="scroll-container">
-                {planets.map((planets, index) => (
+                {planets.map((planet, index) => (
                     <div key={index} className="col">
                         <div className="card">
-                            <h4>{planets.name}</h4>
+                            <h4>{planet.name}</h4>
                             <div key={index} className="card-text">
-                                Population: {planets.climate}<br />
-                                Terrain: {planets.terrain}<br />
+                                Population: {planet.climate}<br />
+                                Terrain: {planet.terrain}<br />
                             </div>
                             <Link to={`/planets/${index + 1}`}>
                             <button data-text="Awesome" className="button">
@@ -125,8 +125,14 @@ return (
                                 </span>
                             </button>
                         </Link>
+                        <button class="btn2" 
+                        onClick={() => handleClick(planet)} >
+                            <svg viewBox="0 0 17.503 15.625" height="20.625" width="20.503" xmlns="http://www.w3.org/2000/svg" class="iconFav">
+                            <path transform="translate(0 0)" d="M8.752,15.625h0L1.383,8.162a4.824,4.824,0,0,1,0-6.762,4.679,4.679,0,0,1,6.674,0l.694.7.694-.7a4.678,4.678,0,0,1,6.675,0,4.825,4.825,0,0,1,0,6.762L8.752,15.624ZM4.72,1.25A3.442,3.442,0,0,0,2.277,2.275a3.562,3.562,0,0,0,0,5l6.475,6.556,6.475-6.556a3.563,3.563,0,0,0,0-5A3.443,3.443,0,0,0,12.786,1.25h-.01a3.415,3.415,0,0,0-2.443,1.038L8.752,3.9,7.164,2.275A3.442,3.442,0,0,0,4.72,1.25Z" id="Fill"></path>
+                            </svg>
+                        </button>
                     </div>
-            </div>
+                    </div>
             ))}
         </div>
     </div>
@@ -139,7 +145,6 @@ return (
                     <div key={index} className="col">
                         <div className="card">
                             <h4>{vehicle.name}</h4>
-                           
                             <div className="card-text">
                                 Passengers: {vehicle.passengers}<br />
                                 Max Speed: {vehicle.max_atmosphering_speed}<br />
@@ -154,6 +159,12 @@ return (
                                 </span>
                             </button>
                             </Link>
+                            <button class="btn2" 
+                            onClick={() => handleClick(vehicle)} >
+                            <svg viewBox="0 0 17.503 15.625" height="20.625" width="20.503" xmlns="http://www.w3.org/2000/svg" class="iconFav">
+                            <path transform="translate(0 0)" d="M8.752,15.625h0L1.383,8.162a4.824,4.824,0,0,1,0-6.762,4.679,4.679,0,0,1,6.674,0l.694.7.694-.7a4.678,4.678,0,0,1,6.675,0,4.825,4.825,0,0,1,0,6.762L8.752,15.624ZM4.72,1.25A3.442,3.442,0,0,0,2.277,2.275a3.562,3.562,0,0,0,0,5l6.475,6.556,6.475-6.556a3.563,3.563,0,0,0,0-5A3.443,3.443,0,0,0,12.786,1.25h-.01a3.415,3.415,0,0,0-2.443,1.038L8.752,3.9,7.164,2.275A3.442,3.442,0,0,0,4.72,1.25Z" id="Fill"></path>
+                            </svg>
+                        </button>
                         </div>
                     </div>
                 ))}
