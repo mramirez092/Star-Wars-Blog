@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { AiFillDelete } from "react-icons/ai";
 
 import { Context } from "../store/appContext";
 
@@ -15,12 +16,10 @@ export const Favorites = () => {
 					return (
 						<li
 							key={index}
-							className="list-group-item d-flex justify-content-between">
-							<Link to={`/characters/${index + 1}`}>
+							className="list-group-item d-flex justify-content-between ">
 								<span>{like.name}</span>
-							</Link>
-							<button className="btn btn-success" onClick={() => actions.removeFavorite(like)}>
-								Remove!
+							<button className="btn btn-secondary" onClick={() => actions.removeFavorite(like)}>
+								<AiFillDelete />
 							</button>
 						</li>
 					);

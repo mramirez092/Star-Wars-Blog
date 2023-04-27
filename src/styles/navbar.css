@@ -3,8 +3,14 @@
     align-items: center;
   }
   
-  .logo img {
+.logo img {
     height: 70px; 
     margin-right: 10px;
   }
+
+.navbar-brand {
+  font-size: 25px;
+  font-weight: 600;
+}
+
   

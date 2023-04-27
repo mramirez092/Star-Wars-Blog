@@ -73,9 +73,6 @@ return (
                 <div key={index} className="col">
                     <div className="card">
                         <h4>{c.name}</h4>
-                        <div className="card-img">
-                        <img src={'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png'} />
-                        </div>
                         <div key={index} className="card-text">
                             <b>Gender:</b> {c.gender} <br />
                             <b>Hair color:</b> {c.hair_color} <br />

@@ -1,9 +1,14 @@
 import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import swlogo from "../../img/Star_Wars_Logo.png";
-import stylesheet from "../../styles/navbar.css";
+import "../../styles/navbar.css";
+import { Context } from "../store/appContext";
+import { AiFillDelete } from "react-icons/ai";
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
+
 	return (
 		<nav className="navbar navbar-light bg-dark mb-3">
 			<Link to="/">
@@ -27,7 +32,18 @@ export const Navbar = () => {
 
 				</button>
   				<ul class="dropdown-menu">
-    				...
+    				{store.favorites.map((like, index) => {
+						return(
+							<li key={index}
+								className="list-group-item">
+									<p>{like.name}</p>
+									<button className="btn btn-secondary p-4 " onClick={() => actions.removeFavorite(like)}>
+								<AiFillDelete />
+							</button>
+							</li>
+						)
+					}
+					)}
   				</ul>
 			</div>
 		</nav>
