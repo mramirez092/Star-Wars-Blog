@@ -73,7 +73,9 @@ return (
                 <div key={index} className="col">
                     <div className="card">
                         <h4>{c.name}</h4>
-                      
+                        <div className="card-img">
+                        <img src={'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png'} />
+                        </div>
                         <div key={index} className="card-text">
                             <b>Gender:</b> {c.gender} <br />
                             <b>Hair color:</b> {c.hair_color} <br />
@@ -112,8 +114,8 @@ return (
                         <div className="card">
                             <h4>{planet.name}</h4>
                             <div key={index} className="card-text">
-                                Population: {planet.climate}<br />
-                                Terrain: {planet.terrain}<br />
+                                Rotation Period: {planet.rotation_period}<br />
+                                Gravity: {planet.gravity}<br />
                             </div>
                             <Link to={`/planets/${index + 1}`}>
                             <button data-text="Awesome" className="button">
